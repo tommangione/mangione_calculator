@@ -32,7 +32,28 @@ fn main() {
 }
 
 fn fib() {
-    println!("Fib function!");
+    println!("\nFibonacci generator\n\nEnter the desired index as a positive integer greater than 0.\n");
+    //logic: Fibonacci number n at index i equals n[i-1] + n[i-1] ...
+    
+    let mut fib_index = String::new();
+    let mut value: usize;
+
+    io::stdin().read_line(& mut fib_index).expect("Failed to read line.");
+
+    let fib_index: usize = fib_index.trim().parse().expect("");
+    let mut fib_vector = vec![0, 1];
+
+    if fib_index < 1 {
+        panic!("Error: index not recognized");
+    } else if fib_index > fib_vector.len() {
+        while fib_index > fib_vector.len() {
+            value = fib_vector[fib_vector.len()-1] + fib_vector[fib_vector.len()-2];
+            fib_vector.push(value);
+        }
+        println!("\n{}", fib_vector[fib_index-1]);
+    } else {
+        println!("\n{}", fib_vector[fib_index-1]);
+    }
 }
 
 fn c_to_f() {
