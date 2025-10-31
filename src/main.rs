@@ -32,19 +32,28 @@ fn main() {
 }
 
 fn fib() {
-    println!("\nFibonacci generator\n\nEnter the desired index as a positive integer greater than 0.\n");
-    //logic: Fibonacci number n at index i equals n[i-1] + n[i-1] ...
     
+    //Intro text
+    println!("\nFibonacci generator\n\nEnter the desired index as a positive integer greater than 0.\n");
+    
+    //creates input variable and value variable that grows the vector that holds the sequence
     let mut fib_index = String::new();
     let mut value: usize;
-
+    
+    //takes input
     io::stdin().read_line(& mut fib_index).expect("Failed to read line.");
-
+    
+    //makes fib_index variable into type usize
     let fib_index: usize = fib_index.trim().parse().expect("");
+    
+    //intializes fib_vector with first two terms of sequence
     let mut fib_vector = vec![0, 1];
-
+    
+    //exception handling
     if fib_index < 1 {
         panic!("Error: index not recognized");
+    
+    //algorithm that grows the vector to the appropriate size before outputting value
     } else if fib_index > fib_vector.len() {
         while fib_index > fib_vector.len() {
             value = fib_vector[fib_vector.len()-1] + fib_vector[fib_vector.len()-2];
