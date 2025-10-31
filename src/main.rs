@@ -68,23 +68,40 @@ fn fib() {
 fn c_to_f() {
     
     //Intro text
-    println!("\nCelsius to Fahrenheit converter\n\nEnter the temperature in Celsius as an integer.");
+    println!("\nCelsius to Fahrenheit converter\n\nEnter the temperature in Celsius as an integer.\n");
 
     //creates input variable
-    let mut celsius_temp = String::new();
+    let mut c_temp = String::new();
 
     //takes input
-    io::stdin().read_line(& mut celsius_temp).expect("Failed to read line.");
+    io::stdin().read_line(& mut c_temp).expect("Failed to read line.");
 
-    //makes calsius_temp into type i32
-    let celsius_temp: i32 = celsius_temp.trim().parse().expect("");
+    //makes c_temp into type i32
+    let c_temp: i32 = c_temp.trim().parse().expect("");
     
     //conversion
-    let f_output = (celsius_temp * 9/5) + 32;
+    let f_output = (c_temp * 9/5) + 32;
 
-    println!("{} Celsius is equivalent to {} Fahrenheit.", celsius_temp, f_output);
+    println!("{} Celsius is equivalent to {} Fahrenheit.", c_temp, f_output);
 }
 
 fn f_to_c() {
-    println!("F to C function!");
+    
+    //Intro text
+    println!("\nFahrenheit to Celsius converter\n\nEnter the temperature in Fahrenheit as an integer.\n");
+
+    //creates input variable
+    let mut f_temp = String::new();
+
+    //takes input
+    io::stdin().read_line(& mut f_temp).expect("Failed to read line.");
+
+    //makes f_temp into type i32
+    let f_temp: i32 = f_temp.trim().parse().expect("");
+
+    //conversion
+    let c_output = (f_temp - 32) * 5/9;
+
+    println!("{} Fahrenheit is equivalent to {} Celsius.", f_temp, c_output);
+
 }
