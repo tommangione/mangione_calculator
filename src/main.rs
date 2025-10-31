@@ -6,7 +6,7 @@ use::std::io;
 fn main() {
     
     //prints selection menu
-    println!("Select the function you want.\nEnter 1 for Fibonacci number calculator\nEnter 2 for Celsius to Farenheit\nEnter 3 for Farenheit to Celsius");
+    println!("Select the function you want.\nEnter 1 for Fibonacci number calculator\nEnter 2 for Celsius to Fahrenheit\nEnter 3 for Fahrenheit to Celsius");
     
     //initializes an empty string. Only use the empty string literal with an immutable string
     //  variable
@@ -34,7 +34,7 @@ fn main() {
 fn fib() {
     
     //Intro text
-    println!("\nFibonacci generator\n\nEnter the desired index as a positive integer greater than 0.\n");
+    println!("\nFibonacci generator\n\nEnter the desired index (indexed starting at 1) as a positive integer greater than 0.\n");
     
     //creates input variable and value variable that grows the vector that holds the sequence
     let mut fib_index = String::new();
@@ -59,14 +59,30 @@ fn fib() {
             value = fib_vector[fib_vector.len()-1] + fib_vector[fib_vector.len()-2];
             fib_vector.push(value);
         }
-        println!("\n{}", fib_vector[fib_index-1]);
+        println!("\nTerm {} of the Fibonacci sequence is {}", fib_index, fib_vector[fib_index-1]);
     } else {
-        println!("\n{}", fib_vector[fib_index-1]);
+        println!("\nTerm {} of the Fibonacci sequence is {}", fib_index, fib_vector[fib_index-1]);
     }
 }
 
 fn c_to_f() {
-    println!("C to F function!");
+    
+    //Intro text
+    println!("\nCelsius to Fahrenheit converter\n\nEnter the temperature in Celsius as an integer.");
+
+    //creates input variable
+    let mut celsius_temp = String::new();
+
+    //takes input
+    io::stdin().read_line(& mut celsius_temp).expect("Failed to read line.");
+
+    //makes calsius_temp into type i32
+    let celsius_temp: i32 = celsius_temp.trim().parse().expect("");
+    
+    //conversion
+    let f_output = (celsius_temp * 9/5) + 32;
+
+    println!("{} Celsius is equivalent to {} Fahrenheit.", celsius_temp, f_output);
 }
 
 fn f_to_c() {
